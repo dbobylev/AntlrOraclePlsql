@@ -1,4 +1,5 @@
 ﻿using Antlr4.Runtime;
+using AntlrOraclePlsql.ErrorHandlers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,7 +15,16 @@ namespace AntlrOraclePlsql
             var lexer = new PlSqlLexer(input);
             var tokens = new CommonTokenStream(lexer);
             var parser = new PlSqlParser(tokens);
-            return parser.sql_script();
+
+            var ErrorManager = new AntlrErrorManager();
+            lexer.AddErrorListener(ErrorManager.lexerErrorListener);
+            parser.AddErrorListener(ErrorManager.parserErrorListener);
+
+            var sql_script = parser.sql_script();
+
+            ErrorManager.CheckErrors();
+
+            return sql_script;
         }
 
         public static PlSqlParser.Sql_scriptContext Run(string filepath)
