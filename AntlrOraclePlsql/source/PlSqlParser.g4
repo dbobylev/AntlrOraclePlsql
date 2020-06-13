@@ -3095,7 +3095,7 @@ cursor_loop_param
     ;
 
 forall_statement
-    : FORALL index_name IN bounds_clause sql_statement (SAVE EXCEPTIONS)?
+    : FORALL index_name IN bounds_clause (SAVE EXCEPTIONS)? sql_statement
     ;
 
 bounds_clause
