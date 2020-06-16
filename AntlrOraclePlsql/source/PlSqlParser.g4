@@ -3745,7 +3745,7 @@ logical_operation:
     ;
 
 multiset_expression
-    : relational_expression (multiset_type=(MEMBER | SUBMULTISET) OF? concatenation)?
+    : relational_expression (NOT? multiset_type=(MEMBER | SUBMULTISET) OF? concatenation)?
     ;
 
 relational_expression
@@ -4053,7 +4053,7 @@ xml_general_default_part
     ;
 
 xml_multiuse_expression_element
-    : expression (AS (id_expression | EVALNAME concatenation))?
+    : expression (AS? (id_expression | EVALNAME concatenation))?
     ;
 
 xmlroot_param_version_part
@@ -4232,8 +4232,9 @@ trigger_name
     ;
 
 variable_name
-    : (INTRODUCER char_set_name)? id_expression ('.' id_expression)?
+    : (INTRODUCER char_set_name)? id_expression ('.' id_expression)*
     | bind_variable
+    | general_element
     ;
 
 index_name
