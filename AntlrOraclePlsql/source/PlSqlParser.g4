@@ -3130,7 +3130,7 @@ return_statement
     ;
 
 function_call
-    : CALL? routine_name function_argument?
+    : CALL? routine_name function_argument? ('.' routine_name function_argument?)*
     ;
 
 procedure_call
@@ -5362,6 +5362,7 @@ non_reserved_keywords_pre12c
     | EXP
     | EXPORT
     | EXPR_CORR_CHECK
+    | EXTEND
     | EXTENDS
     | EXTENT
     | EXTENTS

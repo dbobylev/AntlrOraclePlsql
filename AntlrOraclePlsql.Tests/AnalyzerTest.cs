@@ -8,6 +8,7 @@ namespace AntlrOraclePlsql.Tests
 {
     static class AnalyzerTest
     {
+        [TestCase(ScriptSource.CaseCollectionsExtend, TestName = "Analyzer_Parse_NoErrors: Collections multi Extend")]
         [TestCase(ScriptSource.CasePragmaExceptionInit, TestName = "Analyzer_Parse_NoErrors: Pragma Exception_init")]
         [TestCase(ScriptSource.CaseValuesRowType, TestName = "Analyzer_Parse_NoErrors: insert values Rowtype")]
         [TestCase(ScriptSource.CaseMemberOf, TestName = "Analyzer_Parse_NoErrors: not member of")]

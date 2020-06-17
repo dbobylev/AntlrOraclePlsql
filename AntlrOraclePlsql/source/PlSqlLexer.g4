@@ -519,6 +519,7 @@ EXPLOSION:                    'EXPLOSION';
 EXPORT:                       'EXPORT';
 EXPR_CORR_CHECK:              'EXPR_CORR_CHECK';
 EXPRESS:                      'EXPRESS';
+EXTEND:                       'EXTEND';
 EXTENDS:                      'EXTENDS';
 EXTENT:                       'EXTENT';
 EXTENTS:                      'EXTENTS';

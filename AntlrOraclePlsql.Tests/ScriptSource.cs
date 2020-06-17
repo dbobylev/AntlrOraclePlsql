@@ -7,16 +7,35 @@ namespace AntlrOraclePlsql.Tests
     class ScriptSource
     {
         public const string DebugPrint =
-@"declare 
-  type tItem is record(name varchar2(20), value number);
-  type tList is table of tItem;
-  vList tList := tList();
-  vN number := 1;
-begin
-  vList.extend(1);
-  vlist(1) := tItem('AA', 123);
-  select 2 into vList(vn).Value from dual;
-  dbms_output.put_line(vList(1).Value);
+@"declare
+  type tRec is record (name tnum); 
+  type tbRec is table of tRec;
+  type trecholder is record (list tbRec);
+  vList tbRec := tbrec(); 
+  vHolder tRecHolder; 
+begin 
+  vList.extend; 
+  vList(1).name := tnum();
+  vList(1).name.extend;
+  
+  vholder.List := vList; 
+  vHolder.List(1).name.extend;
+end;";
+
+        public const string CaseCollectionsExtend =
+@"declare
+  type tRec is record (name tnum); 
+  type tbRec is table of tRec;
+  type trecholder is record (list tbRec);
+  vList tbRec := tbrec(); 
+  vHolder tRecHolder; 
+begin 
+  vList.extend; 
+  vList(1).name := tnum();
+  vList(1).name.extend;
+  
+  vholder.List := vList; 
+  vHolder.List(1).name.extend;
 end;";
 
         public const string CasePragmaExceptionInit =
