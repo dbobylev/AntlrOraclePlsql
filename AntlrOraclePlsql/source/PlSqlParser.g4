@@ -4275,7 +4275,7 @@ tableview_name
     ;
 
 xmltable
-    : XMLTABLE '(' (xml_namespaces_clause ',')? concatenation xml_passing_clause? (COLUMNS xml_table_column (',' xml_table_column)*)? ')' ('.' general_element_part)?
+    : XMLTABLE '(' (xml_namespaces_clause ',')? concatenation xml_passing_clause? (COLUMNS xml_table_column (',' xml_table_column)*)? ')' ('.' general_element_part)? (AS table_alias)?
     ;
 
 char_set_name

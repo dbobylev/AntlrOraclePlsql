@@ -8,18 +8,30 @@ namespace AntlrOraclePlsql.Tests
     {
         public const string DebugPrint =
 @"declare
-  type tRec is record (name tnum); 
-  type tbRec is table of tRec;
-  type trecholder is record (list tbRec);
-  vList tbRec := tbrec(); 
-  vHolder tRecHolder; 
-begin 
-  vList.extend; 
-  vList(1).name := tnum();
-  vList(1).name.extend;
-  
-  vholder.List := vList; 
-  vHolder.List(1).name.extend;
+  vXml xmltype := xmltype('<a><b>2</b></a>');
+  vN number;
+begin
+  for obj in (
+  select x.* from xmltable('/a' passing vXml columns
+    n number path 'b') as x
+   )
+  loop
+    null;
+  end loop;
+end;";
+
+        public const string CaseXmlTableAlias =
+@"declare
+  vXml xmltype := xmltype('<a><b>2</b></a>');
+  vN number;
+begin
+  for obj in (
+  select x.* from xmltable('/a' passing vXml columns
+    n number path 'b') as x
+   )
+  loop
+    null;
+  end loop;
 end;";
 
         public const string CaseCollectionsExtend =
