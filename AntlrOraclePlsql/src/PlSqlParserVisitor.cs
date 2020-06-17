@@ -3606,6 +3606,12 @@ public interface IPlSqlParserVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitValues_clause([NotNull] PlSqlParser.Values_clauseContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="PlSqlParser.values_rowtype_clause"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitValues_rowtype_clause([NotNull] PlSqlParser.Values_rowtype_clauseContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="PlSqlParser.merge_statement"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>

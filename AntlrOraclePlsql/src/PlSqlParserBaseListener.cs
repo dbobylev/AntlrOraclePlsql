@@ -7182,6 +7182,18 @@ public partial class PlSqlParserBaseListener : IPlSqlParserListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitValues_clause([NotNull] PlSqlParser.Values_clauseContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="PlSqlParser.values_rowtype_clause"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterValues_rowtype_clause([NotNull] PlSqlParser.Values_rowtype_clauseContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="PlSqlParser.values_rowtype_clause"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitValues_rowtype_clause([NotNull] PlSqlParser.Values_rowtype_clauseContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="PlSqlParser.merge_statement"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>

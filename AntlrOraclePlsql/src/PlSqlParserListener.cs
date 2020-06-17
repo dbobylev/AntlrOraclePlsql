@@ -5988,6 +5988,16 @@ public interface IPlSqlParserListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitValues_clause([NotNull] PlSqlParser.Values_clauseContext context);
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="PlSqlParser.values_rowtype_clause"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterValues_rowtype_clause([NotNull] PlSqlParser.Values_rowtype_clauseContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="PlSqlParser.values_rowtype_clause"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitValues_rowtype_clause([NotNull] PlSqlParser.Values_rowtype_clauseContext context);
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="PlSqlParser.merge_statement"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
