@@ -19,6 +19,12 @@ begin
   dbms_output.put_line(vList(1).Value);
 end;";
 
+        public const string CasePragmaExceptionInit =
+@"create or replace package body mypackage as
+  MyException Exception;
+  pragma exception_init(MyException, -1234);
+end;";
+
         public const string CaseValuesRowType =
 @"declare
   vRowType testtable%rowtype;

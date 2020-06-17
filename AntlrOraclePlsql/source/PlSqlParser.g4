@@ -183,7 +183,8 @@ function_spec
     ;
 
 package_obj_body
-    : variable_declaration
+    : pragma_declaration
+    | variable_declaration
     | subtype_declaration
     | cursor_declaration
     | exception_declaration
