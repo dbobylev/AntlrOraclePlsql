@@ -8,10 +8,11 @@ namespace AntlrOraclePlsql.Tests
 {
     static class AnalyzerTest
     {
-        [TestCase(ScriptSource.CaseMemberOf)]
-        [TestCase(ScriptSource.CaseSimpleForest)]
-        [TestCase(ScriptSource.CaseThreeDot)]
-        [TestCase(ScriptSource.CaseIntoArray)]
+        [TestCase(ScriptSource.CaseValuesRowType, TestName = "Analyzer_Parse_NoErrors: insert values Rowtype")]
+        [TestCase(ScriptSource.CaseMemberOf, TestName = "Analyzer_Parse_NoErrors: not member of")]
+        [TestCase(ScriptSource.CaseSimpleForest, TestName = "Analyzer_Parse_NoErrors: xmlforrest without AS")]
+        [TestCase(ScriptSource.CaseThreeDot, TestName = "Analyzer_Parse_NoErrors: insert into variable")]
+        [TestCase(ScriptSource.CaseIntoArray, TestName = "Analyzer_Parse_NoErrors: insert into collection")]
         public static void Analyzer_Parse_NoErrors(string sql)
         {
             var context = Analyzer.RunUpperCase(sql.Path());

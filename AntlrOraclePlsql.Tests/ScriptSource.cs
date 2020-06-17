@@ -19,6 +19,14 @@ begin
   dbms_output.put_line(vList(1).Value);
 end;";
 
+        public const string CaseValuesRowType =
+@"declare
+  vRowType testtable%rowtype;
+begin
+  vRowType.A := 1;
+  insert into testtable values vRowType;
+end;";
+
         public const string CaseMemberOf =
 @"declare
   vList tNum := tNum(1, 2);

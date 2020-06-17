@@ -3581,7 +3581,7 @@ insert_statement
 // Insert Specific Clauses
 
 single_table_insert
-    : insert_into_clause (values_clause static_returning_clause? | select_statement) error_logging_clause?
+    : insert_into_clause ((values_clause | values_rowtype_clause) static_returning_clause? | select_statement) error_logging_clause?
     ;
 
 multi_table_insert
@@ -3610,6 +3610,10 @@ insert_into_clause
 
 values_clause
     : VALUES '(' expressions? ')'
+    ;
+
+values_rowtype_clause
+    : VALUES variable_name
     ;
 
 merge_statement
