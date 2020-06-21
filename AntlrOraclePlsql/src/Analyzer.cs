@@ -9,10 +9,22 @@ namespace AntlrOraclePlsql
 {
     public class Analyzer
     {
-        public static PlSqlParser.Sql_scriptContext Run(TextReader file)
+        /// <summary>
+        /// Parse the SQL, PL/SQL
+        /// </summary>
+        /// <param name="file"></param>
+        /// <param name="CharsExtended">Allow the use of national chars in variables names</param>
+        /// <returns></returns>
+        public static PlSqlParser.Sql_scriptContext Run(TextReader file, bool CharsExtended = false)
         {
             var input = new AntlrInputStream(file);
-            var lexer = new PlSqlLexer(input);
+
+            PlSqlLexerBase lexer;
+            if (CharsExtended)
+                lexer = new PlSqlLexerCharsExtend(input);
+            else
+                lexer = new PlSqlLexer(input);
+
             var tokens = new CommonTokenStream(lexer);
             var parser = new PlSqlParser(tokens);
 
@@ -22,21 +34,22 @@ namespace AntlrOraclePlsql
 
             var sql_script = parser.sql_script();
 
+            // Raise the parse errors
             ErrorManager.CheckErrors();
 
             return sql_script;
         }
 
-        public static PlSqlParser.Sql_scriptContext Run(string filepath)
+        public static PlSqlParser.Sql_scriptContext Run(string filepath, bool CharsExtended = false)
         {
             PlSqlParser.Sql_scriptContext result;
             using (StreamReader sr = File.OpenText(filepath))
-                result = Run(sr);
+                result = Run(sr, CharsExtended);
             
             return result;
         }
 
-        public static PlSqlParser.Sql_scriptContext RunUpperCase(string filepath)
+        public static PlSqlParser.Sql_scriptContext RunUpperCase(string filepath, bool CharsExtended = false)
         {
             string tmpPath = filepath + ".tmp";
             try
@@ -46,7 +59,7 @@ namespace AntlrOraclePlsql
                         while (sr.Peek() >= 0)
                             sw.WriteLine(sr.ReadLine().ToUpper());
 
-                var result = Run(tmpPath);
+                var result = Run(tmpPath, CharsExtended);
                 File.Delete(tmpPath);
                 return result;
             }
