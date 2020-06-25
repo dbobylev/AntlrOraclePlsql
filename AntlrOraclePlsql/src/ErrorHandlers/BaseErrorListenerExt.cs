@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AntlrOraclePlsql.src.ErrorHandlers
+namespace AntlrOraclePlsql.ErrorHandlers
 {
     public delegate void PushMessageDelegate(string msg);
 
